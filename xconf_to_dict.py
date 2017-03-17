@@ -156,7 +156,7 @@ def xconf_to_dict(file_name,regex):
 
 # Run if module is run as separate code
 if __name__ == '__main__':
-    file = '/Users/josemerchan/Documents/Advanced_Services/Projects/2017/Statoil/Q3/VCS audit review/ST 2/xconf_vcsc08.txt'
+    file = '/'
     #pprint (xconf_to_dict(file,regex_user_admin))
     #pprint (xconf_to_dict(file,regex_group_admin))
     #pprint (xconf_to_dict(file,regex_sys_admin_services))
