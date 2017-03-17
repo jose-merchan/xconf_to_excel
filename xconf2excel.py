@@ -1270,7 +1270,7 @@ def xconf2excel(xconfiguration_file):
 
     for keys in sorted(dict_zone_type):
 
-        zone_title = re.sub(r'[\/\?\*\[\]:]', ' ',dict_zone_config[keys]['Name'][:31]) # Normalize Name so it is accepted by Excel Sheet
+        zone_title = re.sub(r'[\/\?\*\[\]:]', ' ',dict_zone_config[keys]['Name'][:31]) # Normalize Name so character not supported by Excel Sheets are removed
 
         wb.create_sheet(title = zone_title)
         sheet = wb.get_sheet_by_name(zone_title)
