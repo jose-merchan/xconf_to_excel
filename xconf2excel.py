@@ -1,6 +1,7 @@
 #!/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5
 
 import logging, sys
+import re
 import openpyxl, time
 import xconf_to_dict
 from xconf_to_dict import *
@@ -1268,7 +1269,9 @@ def xconf2excel(xconfiguration_file):
     dict_zone_config = xconf_to_dict(xconfiguration_file,regex_zone_config)
 
     for keys in sorted(dict_zone_type):
-        zone_title = dict_zone_config[keys]['Name'][:31]
+
+        zone_title = re.sub(r'[\/\?\*\[\]:]', ' ',dict_zone_config[keys]['Name'][:31]) # Normalize Name so it is accepted by Excel Sheet
+
         wb.create_sheet(title = zone_title)
         sheet = wb.get_sheet_by_name(zone_title)
         sheet.column_dimensions['A'].width = 30
@@ -2455,7 +2458,6 @@ def xconf2excel(xconfiguration_file):
 
     # Save workbook using as file name the VCS system name and the time the program was initiated.
     wb.save(destination_filename)
-
 
 if __name__=="__main__":
     xconf2excel(sys.argv[1])
